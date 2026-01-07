@@ -7558,3 +7558,187 @@ body.v-light .timeline:before {
   from { opacity: 0; transform: translateY(-8px) scale(.98); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+
+/* =========================
+   FOOTER FIXO (FUNCIONA EM COMPACT/MINI/MOBILE)
+========================= */
+
+/* altura real do footer (ajuste se seu footer for maior/menor) */
+:root{
+  --ks-footer-h: 0px;
+}
+
+/* footer sempre fixo no fundo */
+.footer{
+  position: fixed !important;
+  bottom: 0;
+  left: 250px;      /* default sidebar */
+  right: 0;
+  width: auto !important;
+  margin-left: 0 !important; /* evita conflito */
+  z-index: 100;     /* abaixo dos modais (que estão 99999) */
+}
+
+/* quando compact-nav (sidebar 150px) */
+.compact-nav .footer{
+  left: 150px;
+}
+
+/* quando compact + mini (sidebar 60px) */
+.compact-nav.mini-nav .footer{
+  left: 60px;
+}
+
+/* mobile: sidebar some, footer full */
+@media (max-width: 767px){
+  .footer{
+    left: 0;
+  }
+}
+
+/* =========================
+   RESERVA ESPAÇO PRO FOOTER (pra não sobrepor conteúdo)
+========================= */
+.content-body{
+  padding-bottom: var(--ks-footer-h) !important;
+}
+
+/* =========================
+   SIDEBAR ATÉ O FOOTER (encostar no footer)
+========================= */
+/* altura = tela - header - footer */
+.nk-sidebar{
+  height: calc(100vh - 60px - var(--ks-footer-h)) !important;
+  overflow-y: auto;
+  padding-bottom: 0 !important; /* remove o "70px" fixo */
+}
+
+
+@media (max-width: 767px){
+  .footer{
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .footer .copyright{
+    width: 100% !important;
+    border-radius: 0 !important; /* evita parecer “caixinha” */
+  }
+}
+
+@media (max-width: 767px){
+  .header-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .header-right{
+    float: none !important;
+    line-height: 60px;
+    max-width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* Se o nome estiver nesse span */
+  .user-avatar{
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+@media (max-width: 767px){
+  #main-wrapper.mini-nav .nk-sidebar{ left: -100% !important; }
+  #main-wrapper:not(.mini-nav) .nk-sidebar{ left: 0 !important; }
+}
+
+@media (max-width: 767px){
+  .nk-sidebar{
+    width: 20vw !important;   /* 👈 ajuste aqui */
+    max-width: 320px;        /* limite pra não ficar gigante */
+  }
+}
+
+
+
+
+
+@media (max-width: 767px){
+
+  /* Header fixo e estável */
+  .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* Header-content vira flex */
+  .header-content{
+    margin-left: 60px;              /* espaço do logo/menu */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* Lado direito (Bem vindo) SEM cortar e sempre no canto */
+  .header-right{
+    float: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    white-space: nowrap;            /* nunca quebra linha */
+    overflow: visible !important;   /* não corta */
+    max-width: none !important;     /* não limita */
+  }
+
+  /* Se o nome do usuário estiver nesse span */
+  .header-right .user-avatar{
+    white-space: nowrap;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-width: none !important;
+    display: inline-block;
+  }
+
+  /* Garante que o conteúdo comece abaixo do header fixo */
+  .content-body{
+    padding-top: 60px;
+  }
+
+  /* Sidebar não pode empurrar o header no mobile */
+  .nk-sidebar{
+    top: 60px;                      /* abaixo do header */
+  }
+}
+
+
+@media (min-width: 992px) {
+  .horizontal-nav #main-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 991px){
+  #main-wrapper{
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .horizontal-nav #main-wrapper{
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}

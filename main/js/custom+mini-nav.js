@@ -128,3 +128,22 @@ jQuery(window).on("load", function () {
 
 })(jQuery);
 
+window.addEventListener('load', function () {
+    const wrapper = document.getElementById('main-wrapper');
+    const btn = document.querySelector('.nav-control'); // botão do hamburger
+
+    if (!wrapper || !btn) return;
+
+    // Mobile começa fechado
+    if (window.innerWidth <= 767) {
+      wrapper.classList.add('mini-nav');
+    }
+
+    // Toggle no mobile
+    btn.addEventListener('click', function (e) {
+      if (window.innerWidth <= 767) {
+        e.preventDefault();
+        wrapper.classList.toggle('mini-nav');
+      }
+    });
+  });
