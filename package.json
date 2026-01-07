@@ -13,7 +13,7 @@
     "devDependencies": {
         "gulp": "^3.9.1",
         "gulp-clean-css": "^3.9.4",
-        "gulp-sass": "^4.0.1"
+        "sass": "^1.97.2"
     },
     "dependencies": {
         "@mdi/font": "^2.4.85",
