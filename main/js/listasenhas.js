@@ -92,6 +92,7 @@ async function carregarSenhas() {
     }
 
     allGroups = await res.json();
+    ordenarGruposAlfabeticamente(allGroups);
     filteredGroups = [...allGroups];
 
     // sempre que recarregar, mantém página válida
@@ -688,6 +689,18 @@ async function excluirGrupo(groupId) {
     }
   }
 }
+
+/* =========================
+   UTILITÁRIOS
+========================= */
+function ordenarGruposAlfabeticamente(grupos) {
+  grupos.sort((a, b) =>
+    (a.name || '').localeCompare(b.name || '', 'pt-BR', {
+      sensitivity: 'base'
+    })
+  );
+}
+
 
 /* =========================
    ESCAPES
