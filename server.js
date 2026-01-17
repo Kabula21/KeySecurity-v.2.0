@@ -35,16 +35,16 @@ app.use(session({
    POSTGRESQL
 ========================= */
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  ssl: { rejectUnauthorized: false }
 });
 
-
-
-pool.query('SELECT NOW()')
-  .then(res => console.log('PostgreSQL conectado:', res.rows[0]))
+pool.query('select 1')
+  .then(() => console.log('PostgreSQL conectado com sucesso'))
   .catch(err => console.error('Erro PostgreSQL:', err.message));
 
 /* =========================
