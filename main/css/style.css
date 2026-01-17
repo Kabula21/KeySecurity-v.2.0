@@ -7425,7 +7425,7 @@ body.v-light .timeline:before {
 
 
 .compact-nav .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     margin-left: 150px; /* se existe um menu lateral */
     width: calc(100% - 150px);
